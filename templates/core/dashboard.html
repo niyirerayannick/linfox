@@ -1,0 +1,102 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+   
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-12 d-flex">
+                <div class="dash-count">
+                    <div class="dash-counts">
+                        <h4>{{ total_videos }}</h4>
+                        <h5>Total DEDUCTIONS</h5>
+                    </div>
+                    <div class="dash-imgs">
+                        <i data-feather="user"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-12 d-flex">
+                <div class="dash-count das1">
+                    <div class="dash-counts">
+                        <h4>{{ total_users }}</h4>
+                        <h5>Total PAYMENT</h5>
+                    </div>
+                    <div class="dash-imgs">
+                        <i data-feather="user-check"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-12 d-flex">
+                <div class="dash-count das2">
+                    <div class="dash-counts">
+                        <h4>{{ total_articles }}</h4>
+                        <h5>Total DRIVERS</h5>
+                    </div>
+                    <div class="dash-imgs">
+                        <i data-feather="file-text"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 col-12 d-flex">
+                <div class="dash-count das3">
+                    <div class="dash-counts">
+                        <h4>105</h4>
+                        <h5>CAR</h5>
+                    </div>
+                    <div class="dash-imgs">
+                        <i data-feather="file"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card mb-0">
+            <div class="card-body">
+                <h4 class="card-title">Car List</h4>
+                <div class="table-responsive dataview">
+                    <table class="table datatable">
+                        <thead>
+                            <tr>
+                                <th>Car Code</th>
+                                <th>Car Name</th>
+                                <th>Model Name</th>
+                                <th>Driver name</th>
+                                <th>Uploaded By</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a href="javascript:void(0);">1</a></td>
+                                <td>Study Rwanda</td>
+                                <td>Technology</td>
+                                <td>12-12-2022</td>
+                                <td>Yannick</td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0);">2</a></td>
+                                <td>Study Rwanda</td>
+                                <td>Technology</td>
+                                <td>12-12-2022</td>
+                                <td>Yannick</td>
+                            </tr>
+                            <tr>
+                                <td><a href="javascript:void(0);">3</a></td>
+                                <td>Study Rwanda</td>
+                                <td>Technology</td>
+                                <td>12-12-2022</td>
+                                <td>Yannick</td>
+                            </tr>
+                            <!-- Add other product entries similarly -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
