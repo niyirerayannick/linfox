@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Car List</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+
     <h1>Car List</h1>
     <a href="{% url 'car_create' %}">Add New Car</a>
     <ul>
@@ -15,5 +16,7 @@
             </li>
         {% endfor %}
     </ul>
-</body>
-</html>
+    </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Car Form</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+
     <h1>{{ car.pk|yesno:"Edit Car,Add New Car" }}</h1>
     <form method="post">
         {% csrf_token %}
@@ -22,5 +23,7 @@
         <button type="submit">{{ car.pk|yesno:"Update,Create" }}</button>
     </form>
     <a href="{% url 'car_list' %}">Back to Car List</a>
-</body>
-</html>
+</div>
+</div>
+</div>
+{% endblock %}

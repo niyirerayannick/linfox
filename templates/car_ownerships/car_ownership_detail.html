@@ -1,0 +1,15 @@
+<!-- car_ownerships/car_ownership_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Ownership Detail</title>
+</head>
+<body>
+    <h1>Car Ownership Detail</h1>
+    <p><strong>Owner:</strong> {{ car_ownership.owner.name }}</p>
+    <p><strong>Car:</strong> {{ car_ownership.car.registration_number }}</p>
+    <p><strong>Driver:</strong> {{ car_ownership.driver.name }}</p>
+    <a href="{% url 'car_ownership_list' %}">Back to Car Ownership List</a>
+</body>
+</html>

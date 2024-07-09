@@ -1,0 +1,16 @@
+<!-- car_ownerships/car_ownership_confirm_delete.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete Car Ownership</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete this car ownership?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'car_ownership_list' %}">No, go back</a>
+</body>
+</html>

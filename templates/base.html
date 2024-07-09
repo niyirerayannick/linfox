@@ -159,12 +159,12 @@
                     
                     <li class="submenu">
                         <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
-                            <span> Users</span> <span class="menu-arrow"></span></a>
+                            <span>Car Owners</span> <span class="menu-arrow"></span></a>
                         <ul>
-                        <li><a href="{% url 'home' %}">New User </a></li>
-                        <li><a href="{% url 'home' %}">Users List</a></li>
+                        <li><a href="{% url 'owner_list' %}">New Car Owners </a></li>
+                        <li><a href="{% url 'owner_create' %}">Car Owners List</a></li>
                         </ul>
-                        </li>
+                    </li>
                     <li class="submenu">
                         <a href="javascript:void(0);">
                             <img src="{% static '/img/icons/product.svg' %}" alt="img">
@@ -172,19 +172,74 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul>
-                            <li><a href="{% url 'home' %}">Car List</a></li>
-                            <li><a href="{% url 'home' %}">Add Car</a></li>
+                            <li><a href="{% url 'car_list' %}">Car List</a></li>
+                            <li><a href="{% url 'car_create' %}">Add Car</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
                         <a href="javascript:void(0);">
-                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
-                            <span> Category</span>
+                            <img src="{% static '/img/icons/product.svg' %}" alt="img">
+                            <span> Car Ownerships</span>
                             <span class="menu-arrow"></span>
                         </a>
                         <ul>
-                            <li><a href="{% url 'home' %}">Category List</a></li>
-                            <li><a href="{% url 'home' %}">Add Category</a></li>
+                            <li><a href="{% url 'car_ownership_list' %}">Car Ownerships List</a></li>
+                            <li><a href="{% url 'car_ownership_create' %}">Add Car Ownerships</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);">
+                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <span> Fuel Consumptions</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul>
+                            <li><a href="{% url 'fuel_consumption_list' %}">fuel consumptions List</a></li>
+                            <li><a href="{% url 'fuel_consumption_create' %}">Add fuel consumptions</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);">
+                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <span> Destinations</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul>
+                            <li><a href="{% url 'destination_list' %}">destinations List</a></li>
+                            <li><a href="{% url 'destination_create' %}">Add destinations</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);">
+                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <span> Product deliveries</span>
+                            <span class="menu-arrow"></span>
+                        </a>
+                        <ul>
+                            <li><a href="{% url 'destination_list' %}">Product Deliveries List</a></li>
+                            <li><a href="{% url 'destination_create' %}">Add Product Deliveries</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
+                            <span> Payments</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                        <li><a href="{% url 'payment_list' %}">Payments List </a></li>
+                        <li><a href="{% url 'payment_create' %}">Payments new</a></li>
+                        </ul>
+                    </li>
+
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
+                            <span> Users</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                        <li><a href="{% url 'home' %}">New User </a></li>
+                        <li><a href="{% url 'home' %}">Users List</a></li>
                         </ul>
                     </li>
 
