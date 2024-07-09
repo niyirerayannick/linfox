@@ -1,5 +1,11 @@
-driver_confirm_delete.html
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+        <!DOCTYPE html>
 <html>
 <head>
     <title>Confirm Delete Driver</title>
@@ -13,3 +19,7 @@ driver_confirm_delete.html
     <a href="{% url 'driver_list' %}">No, go back</a>
 </body>
 </html>
+</div>
+</div>
+</div>
+{% endblock %}

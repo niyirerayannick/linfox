@@ -1,25 +1,37 @@
-<!-- car_ownerships/car_ownership_list.html -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Car Ownership List</title>
-</head>
-<body>
-    <h1>Car Ownership List</h1>
-    <a href="{% url 'car_ownership_create' %}">Add New Car Ownership</a>
-    <ul>
-        {% for car_ownership in car_ownerships %}
-            <li>
-                <a href="{% url 'car_ownership_detail' car_ownership.pk %}">
-                    {{ car_ownership.owner.name }} owns {{ car_ownership.car.registration_number }} driven by {{ car_ownership.driver.name }}
-                </a> 
-                (<a href="{% url 'car_ownership_update' car_ownership.pk %}">Edit</a> | 
-                <a href="{% url 'car_ownership_delete' car_ownership.pk %}">Delete</a>)
-            </li>
-        {% empty %}
-            <li>No car ownerships yet.</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <title>Car Ownership List</title>
+        </head>
+        <body>
+            <h1>Car Ownership List</h1>
+            <a href="{% url 'car_ownership_create' %}">Add New Car Ownership</a>
+            <ul>
+                {% for car_ownership in car_ownerships %}
+                    <li>
+                        <a href="{% url 'car_ownership_detail' car_ownership.pk %}">
+                            {{ car_ownership.owner.name }} owns {{ car_ownership.car.registration_number }} driven by {{ car_ownership.driver.name }}
+                        </a> 
+                        (<a href="{% url 'car_ownership_update' car_ownership.pk %}">Edit</a> | 
+                        <a href="{% url 'car_ownership_delete' car_ownership.pk %}">Delete</a>)
+                    </li>
+                {% empty %}
+                    <li>No car ownerships yet.</li>
+                {% endfor %}
+            </ul>
+        </body>
+        </html>
+        
+    </div>
+    </div>
+</div>
+{% endblock %}
+

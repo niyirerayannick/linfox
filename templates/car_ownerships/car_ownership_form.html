@@ -1,44 +1,54 @@
-<!-- car_ownerships/car_ownership_form.html -->
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>{% if car_ownership %}Edit Car Ownership{% else %}Add New Car Ownership{% endif %}</title>
-</head>
-<body>
-    <h1>{% if car_ownership %}Edit Car Ownership{% else %}Add New Car Ownership{% endif %}</h1>
-    <form method="post">
-        {% csrf_token %}
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+        <head>
+            <title>{% if car_ownership %}Edit Car Ownership{% else %}Add New Car Ownership{% endif %}</title>
+        </head>
+        <body>
+            <h1>{% if car_ownership %}Edit Car Ownership{% else %}Add New Car Ownership{% endif %}</h1>
+            <form method="post">
+                {% csrf_token %}
+                
+                <!-- Owner field -->
+                <label for="owner">Owner:</label>
+                <select id="owner" name="owner">
+                    {% for owner in owners %}
+                        <option value="{{ owner.id }}" {% if car_ownership and car_ownership.owner_id == owner.id %}selected{% endif %}>{{ owner.name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                
+                <!-- Car field -->
+                <label for="car">Car:</label>
+                <select id="car" name="car">
+                    {% for car in cars %}
+                        <option value="{{ car.id }}" {% if car_ownership and car_ownership.car_id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                
+                <!-- Driver field -->
+                <label for="driver">Driver:</label>
+                <select id="driver" name="driver">
+                    {% for driver in drivers %}
+                        <option value="{{ driver.id }}" {% if car_ownership and car_ownership.driver_id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
+                    {% endfor %}
+                </select>
+                <br>
+                
+                <button type="submit">{% if car_ownership %}Update{% else %}Create{% endif %}</button>
+            </form>
+            <a href="{% url 'car_ownership_list' %}">Back to Car Ownership List</a>
+        </body>
+        </html>
         
-        <!-- Owner field -->
-        <label for="owner">Owner:</label>
-        <select id="owner" name="owner">
-            {% for owner in owners %}
-                <option value="{{ owner.id }}" {% if car_ownership and car_ownership.owner_id == owner.id %}selected{% endif %}>{{ owner.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        
-        <!-- Car field -->
-        <label for="car">Car:</label>
-        <select id="car" name="car">
-            {% for car in cars %}
-                <option value="{{ car.id }}" {% if car_ownership and car_ownership.car_id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        
-        <!-- Driver field -->
-        <label for="driver">Driver:</label>
-        <select id="driver" name="driver">
-            {% for driver in drivers %}
-                <option value="{{ driver.id }}" {% if car_ownership and car_ownership.driver_id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        
-        <button type="submit">{% if car_ownership %}Update{% else %}Create{% endif %}</button>
-    </form>
-    <a href="{% url 'car_ownership_list' %}">Back to Car Ownership List</a>
-</body>
-</html>
+    </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
 <html>
 <head>
     <title>Payment Detail</title>
@@ -11,3 +17,7 @@
     <a href="{% url 'payment_list' %}">Back to Payment List</a>
 </body>
 </html>
+</div>
+</div>
+</div>
+{% endblock %}

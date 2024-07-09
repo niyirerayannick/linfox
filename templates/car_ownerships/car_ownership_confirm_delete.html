@@ -1,7 +1,12 @@
-<!-- car_ownerships/car_ownership_confirm_delete.html -->
 
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+   
 <head>
     <title>Confirm Delete Car Ownership</title>
 </head>
@@ -14,3 +19,8 @@
     <a href="{% url 'car_ownership_list' %}">No, go back</a>
 </body>
 </html>
+    </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -1,7 +1,12 @@
-<!-- car_ownerships/car_ownership_detail.html -->
 
-<!DOCTYPE html>
-<html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+   
 <head>
     <title>Car Ownership Detail</title>
 </head>
@@ -12,4 +17,9 @@
     <p><strong>Driver:</strong> {{ car_ownership.driver.name }}</p>
     <a href="{% url 'car_ownership_list' %}">Back to Car Ownership List</a>
 </body>
-</html>
+
+    </div>
+    </div>
+</div>
+{% endblock %}
+

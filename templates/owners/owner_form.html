@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<!DOCTYPE html>{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
 <html>
 <head>
     <title>Owner Form</title>
@@ -18,3 +24,7 @@
     <a href="{% url 'owner_list' %}">Back to Owner List</a>
 </body>
 </html>
+</div>
+</div>
+</div>
+{% endblock %}

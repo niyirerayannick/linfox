@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
 <html>
 <head>
     <title>Confirm Delete Owner</title>
@@ -12,3 +18,7 @@
     <a href="{% url 'owner_list' %}">No, go back</a>
 </body>
 </html>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -19,11 +19,11 @@
 <link rel="stylesheet" href="{% static '/css/style.css' %}">
 </head>
 <body>
-    <div id="global-loader">
+    <!-- <div id="global-loader">
         <div class="whirly-loader"> 
             
         </div>
-    </div>
+    </div> -->
 
     <div class="main-wrapper">
         <div class="header">
@@ -159,10 +159,10 @@
                     
                     <li class="submenu">
                         <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
-                            <span>Car Owners</span> <span class="menu-arrow"></span></a>
+                            <span>Driver</span> <span class="menu-arrow"></span></a>
                         <ul>
-                        <li><a href="{% url 'owner_list' %}">New Car Owners </a></li>
-                        <li><a href="{% url 'owner_create' %}">Car Owners List</a></li>
+                        <li><a href="{% url 'driver_list' %}"> Driver List </a></li>
+                        <li><a href="{% url 'driver_create' %}">New Driver</a></li>
                         </ul>
                     </li>
                     <li class="submenu">
@@ -183,6 +183,8 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul>
+                            <li><a href="{% url 'owner_list' %}">New Car Owners </a></li>
+                            <li><a href="{% url 'owner_create' %}">Car Owners List</a></li>
                             <li><a href="{% url 'car_ownership_list' %}">Car Ownerships List</a></li>
                             <li><a href="{% url 'car_ownership_create' %}">Add Car Ownerships</a></li>
                         </ul>
@@ -202,7 +204,7 @@
 
                     <li class="submenu">
                         <a href="javascript:void(0);">
-                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <img src="{% static '/img/icons/places.svg' %}" alt="img">
                             <span> Destinations</span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -214,7 +216,7 @@
 
                     <li class="submenu">
                         <a href="javascript:void(0);">
-                            <img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <img src="{% static '/img/icons/transfer1.svg' %}" alt="img">
                             <span> Product deliveries</span>
                             <span class="menu-arrow"></span>
                         </a>
@@ -225,7 +227,7 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
+                        <a href="javascript:void(0);"><img src="{% static '/img/icons/dollar-square.svg' %}" alt="img">
                             <span> Payments</span> <span class="menu-arrow"></span></a>
                         <ul>
                         <li><a href="{% url 'payment_list' %}">Payments List </a></li>

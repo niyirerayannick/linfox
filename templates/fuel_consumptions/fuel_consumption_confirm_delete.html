@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<div class="page-wrapper">
+    <div class="content">
+    <div class="row">
+        <!DOCTYPE html>
 <html>
 <head>
     <title>Confirm Delete Fuel Consumption</title>
@@ -12,3 +19,7 @@
     <a href="{% url 'fuel_consumption_list' %}">No, go back</a>
 </body>
 </html>
+</div>
+</div>
+</div>
+{% endblock %}
