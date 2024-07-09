@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destination Form</title>
+</head>
+<body>
+    <h1>{{ destination.pk|yesno:"Edit Destination,Add New Destination" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="starting_point">Starting Point:</label>
+        <input type="text" id="starting_point" name="starting_point" value="{{ destination.starting_point|default_if_none:'' }}">
+        <br>
+        <label for="destination_point">Destination Point:</label>
+        <input type="text" id="destination_point" name="destination_point" value="{{ destination.destination_point|default_if_none:'' }}">
+        <br>
+        <button type="submit">{{ destination.pk|yesno:"Update,Create" }}</button>
+    </form>
+    <a href="{% url 'destination_list' %}">Back to Destination List</a>
+</body>
+</html>

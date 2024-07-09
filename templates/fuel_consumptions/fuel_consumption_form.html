@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuel Consumption Form</title>
+</head>
+<body>
+    <h1>{{ fuel_consumption.pk|yesno:"Edit Fuel Consumption,Add New Fuel Consumption" }}</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="driver">Driver:</label>
+        <select id="driver" name="driver">
+            {% for driver in drivers %}
+                <option value="{{ driver.id }}" {% if fuel_consumption.driver and fuel_consumption.driver.id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="car">Car:</label>
+        <select id="car" name="car">
+            {% for car in cars %}
+                <option value="{{ car.id }}" {% if fuel_consumption.car and fuel_consumption.car.id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination">
+            {% for destination in destinations %}
+                <option value="{{ destination.id }}" {% if fuel_consumption.destination and fuel_consumption.destination.id == destination.id %}selected{% endif %}>{{ destination.starting_point }} to {{ destination.destination_point }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="amount_used">Fuel Amount Used:</label>
+        <input type="text" id="amount_used" name="amount_used" value="{{ fuel_consumption.amount_used|default_if_none:'' }}">
+        <br>
+        <label for="invoice_picture">Invoice Picture:</label>
+        <input type="file" id="invoice_picture" name="invoice_picture">
+        <br>
+        <button type="submit">{{ fuel_consumption.pk|yesno:"Update,Create" }}</button>
+    </form>
+    <a href="{% url 'fuel_consumption_list' %}">Back to Fuel Consumption List</a>
+</body>
+</html>

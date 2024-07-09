@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Form</title>
+</head>
+<body>
+    <h1>{{ driver.pk|yesno:"Edit Driver,Add New Driver" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ driver.name|default_if_none:'' }}">
+        <br>
+        <label for="license_number">License Number:</label>
+        <input type="text" id="license_number" name="license_number" value="{{ driver.license_number|default_if_none:'' }}">
+        <br>
+        <label for="contact_details">Contact Details:</label>
+        <input type="text" id="contact_details" name="contact_details" value="{{ driver.contact_details|default_if_none:'' }}">
+        <br>
+        <button type="submit">{{ driver.pk|yesno:"Update,Create" }}</button>
+    </form>
+    <a href="{% url 'driver_list' %}">Back to Driver List</a>
+</body>
+</html>

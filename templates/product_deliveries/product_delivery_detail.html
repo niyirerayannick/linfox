@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Delivery Detail</title>
+</head>
+<body>
+    <h1>Product Delivery Detail</h1>
+    <p>Driver: {{ product_delivery.driver.name }}</p>
+    <p>Car: {{ product_delivery.car.registration_number }}</p>
+    <p>Destination: {{ product_delivery.destination.starting_point }} to {{ product_delivery.destination.destination_point }}</p>
+    <p>Product Name: {{ product_delivery.product_name }}</p>
+    <p>Quantity Sent: {{ product_delivery.quantity_sent }}</p>
+    <p>Quantity Received: {{ product_delivery.quantity_received }}</p>
+    <a href="{% url 'product_delivery_list' %}">Back to Product Delivery List</a>
+</body>
+</html>

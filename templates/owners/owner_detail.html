@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Owner Detail</title>
+</head>
+<body>
+    <h1>Owner Detail</h1>
+    <p>Name: {{ owner.name }}</p>
+    <p>Contact Details: {{ owner.contact_details }}</p>
+    <a href="{% url 'owner_list' %}">Back to Owner List</a>
+</body>
+</html>

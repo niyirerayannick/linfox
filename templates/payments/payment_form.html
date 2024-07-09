@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Form</title>
+</head>
+<body>
+    <h1>{{ payment.pk|yesno:"Edit Payment,Add New Payment" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="owner">Owner:</label>
+        <select id="owner" name="owner">
+            {% for owner in owners %}
+                <option value="{{ owner.id }}" {% if payment.owner and payment.owner.id == owner.id %}selected{% endif %}>{{ owner.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="amount">Amount:</label>
+        <input type="text" id="amount" name="amount" value="{{ payment.amount|default_if_none:'' }}">
+        <br>
+        <label for="payment_date">Payment Date:</label>
+        <input type="date" id="payment_date" name="payment_date" value="{{ payment.payment_date|default_if_none:'' }}">
+        <br>
+        <button type="submit">{{ payment.pk|yesno:"Update,Create" }}</button>
+    </form>
+    <a href="{% url 'payment_list' %}">Back to Payment List</a>
+</body>
+</html>

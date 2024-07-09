@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuel Consumption List</title>
+</head>
+<body>
+    <h1>Fuel Consumption List</h1>
+    <a href="{% url 'fuel_consumption_create' %}">Add New Fuel Consumption</a>
+    <ul>
+        {% for fuel_consumption in fuel_consumptions %}
+            <li>
+                <a href="{% url 'fuel_consumption_detail' fuel_consumption.pk %}">{{ fuel_consumption.driver.name }} - {{ fuel_consumption.car.registration_number }}</a> 
+                (<a href="{% url 'fuel_consumption_update' fuel_consumption.pk %}">Edit</a> | 
+                <a href="{% url 'fuel_consumption_delete' fuel_consumption.pk %}">Delete</a>)
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

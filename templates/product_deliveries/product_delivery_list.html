@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Delivery List</title>
+</head>
+<body>
+    <h1>Product Delivery List</h1>
+    <a href="{% url 'product_delivery_create' %}">Add New Product Delivery</a>
+    <ul>
+        {% for product_delivery in product_deliveries %}
+            <li>
+                <a href="{% url 'product_delivery_detail' product_delivery.pk %}">{{ product_delivery.product_name }}</a> 
+                (<a href="{% url 'product_delivery_update' product_delivery.pk %}">Edit</a> | 
+                <a href="{% url 'product_delivery_delete' product_delivery.pk %}">Delete</a>)
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

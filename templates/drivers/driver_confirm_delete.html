@@ -1,0 +1,15 @@
+driver_confirm_delete.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confirm Delete Driver</title>
+</head>
+<body>
+    <h1>Are you sure you want to delete this driver?</h1>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Yes, delete</button>
+    </form>
+    <a href="{% url 'driver_list' %}">No, go back</a>
+</body>
+</html>

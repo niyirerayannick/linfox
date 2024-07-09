@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Driver Detail</title>
+</head>
+<body>
+    <h1>Driver Detail</h1>
+    <p>Name: {{ driver.name }}</p>
+    <p>License Number: {{ driver.license_number }}</p>
+    <p>Contact Details: {{ driver.contact_details }}</p>
+    <a href="{% url 'driver_list' %}">Back to Driver List</a>
+</body>
+</html>

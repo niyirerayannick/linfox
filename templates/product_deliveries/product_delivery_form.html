@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Delivery Form</title>
+</head>
+<body>
+    <h1>{{ product_delivery.pk|yesno:"Edit Product Delivery,Add New Product Delivery" }}</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="driver">Driver:</label>
+        <select id="driver" name="driver">
+            {% for driver in drivers %}
+                <option value="{{ driver.id }}" {% if product_delivery.driver and product_delivery.driver.id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="car">Car:</label>
+        <select id="car" name="car">
+            {% for car in cars %}
+                <option value="{{ car.id }}" {% if product_delivery.car and product_delivery.car.id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="destination">Destination:</label>
+        <select id="destination" name="destination">
+            {% for destination in destinations %}
+                <option value="{{ destination.id }}" {% if product_delivery.destination and product_delivery.destination.id == destination.id %}selected{% endif %}>{{ destination.starting_point }} to {{ destination.destination_point }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <label for="product_name">Product Name:</label>
+        <input type="text" id="product_name" name="product_name" value="{{ product_delivery.product_name|default_if_none:'' }}">
+        <br>
+        <label for="quantity_sent">Quantity Sent:</label>
+        <input type="text" id="quantity_sent" name="quantity_sent" value="{{ product_delivery.quantity_sent|default_if_none:'' }}">
+        <br>
+        <label for="quantity_received">Quantity Received:</label>
+        <input type="text" id="quantity_received" name="quantity_received" value="{{ product_delivery.quantity_received|default_if_none:'' }}">
+        <br>
+        <button type="submit">{{ product_delivery.pk|yesno:"Update,Create" }}</button>
+    </form>
+    <a href="{% url 'product_delivery_list' %}">Back to Product Delivery List</a>
+</body>
+</html>

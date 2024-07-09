@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fuel Consumption Detail</title>
+</head>
+<body>
+    <h1>Fuel Consumption Detail</h1>
+    <p>Driver: {{ fuel_consumption.driver.name }}</p>
+    <p>Car: {{ fuel_consumption.car.registration_number }}</p>
+    <p>Destination: {{ fuel_consumption.destination.starting_point }} to {{ fuel_consumption.destination.destination_point }}</p>
+    <p>Fuel Amount Used: {{ fuel_consumption.amount_used }}</p>
+    <p>Invoice Picture: <img src="{{ fuel_consumption.invoice_picture.url }}" alt="Invoice Picture"></p>
+    <a href="{% url 'fuel_consumption_list' %}">Back to Fuel Consumption List</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Destination List</title>
+</head>
+<body>
+    <h1>Destination List</h1>
+    <a href="{% url 'destination_create' %}">Add New Destination</a>
+    <ul>
+        {% for destination in destinations %}
+            <li>
+                <a href="{% url 'destination_detail' destination.pk %}">{{ destination.starting_point }} to {{ destination.destination_point }}</a> 
+                (<a href="{% url 'destination_update' destination.pk %}">Edit</a> | 
+                <a href="{% url 'destination_delete' destination.pk %}">Delete</a>)
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

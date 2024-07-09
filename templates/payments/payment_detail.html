@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Detail</title>
+</head>
+<body>
+    <h1>Payment Detail</h1>
+    <p>Owner: {{ payment.owner.name }}</p>
+    <p>Amount: {{ payment.amount }}</p>
+    <p>Payment Date: {{ payment.payment_date }}</p>
+    <a href="{% url 'payment_list' %}">Back to Payment List</a>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Owner List</title>
+</head>
+<body>
+    <h1>Owner List</h1>
+    <a href="{% url 'owner_create' %}">Add New Owner</a>
+    <ul>
+        {% for owner in owners %}
+            <li>
+                <a href="{% url 'owner_detail' owner.pk %}">{{ owner.name }}</a> 
+                (<a href="{% url 'owner_update' owner.pk %}">Edit</a> | 
+                <a href="{% url 'owner_delete' owner.pk %}">Delete</a>)
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
