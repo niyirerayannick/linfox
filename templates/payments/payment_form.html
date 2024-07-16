@@ -4,34 +4,48 @@
 
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<html>
-<head>
-    <title>Payment Form</title>
-</head>
-<body>
-    <h1>{{ payment.pk|yesno:"Edit Payment,Add New Payment" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="owner">Owner:</label>
-        <select id="owner" name="owner">
-            {% for owner in owners %}
-                <option value="{{ owner.id }}" {% if payment.owner and payment.owner.id == owner.id %}selected{% endif %}>{{ owner.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="amount">Amount:</label>
-        <input type="text" id="amount" name="amount" value="{{ payment.amount|default_if_none:'' }}">
-        <br>
-        <label for="payment_date">Payment Date:</label>
-        <input type="date" id="payment_date" name="payment_date" value="{{ payment.payment_date|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ payment.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'payment_list' %}">Back to Payment List</a>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>{{ is_update|yesno:"Edit Payment,Add New Payment" }}</h4>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="car_ownership">Car Ownership</label>
+                        <select id="car_ownership" name="car_ownership" class="form-control" required>
+                            <option value="">Select Car Ownership</option>
+                            {% for car_ownership in car_ownerships %}
+                                <option value="{{ car_ownership.id }}" {% if payment and payment.car_ownership.id == car_ownership.id %}selected{% endif %}>
+                                    {{ car_ownership.owner.name }} - {{ car_ownership.car.registration_number }} - {{ car_ownership.driver.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input type="number" step="0.01" id="amount" name="amount" class="form-control" required value="{% if payment %}{{ payment.amount }}{% endif %}">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_date">Payment Date</label>
+                        <input type="date" id="payment_date" name="payment_date" class="form-control" required value="{% if payment %}{{ payment.payment_date }}{% endif %}">
+                    </div>
+                    <div class="form-group">
+                        <label for="payment_method">Payment Method</label>
+                        <input type="text" id="payment_method" name="payment_method" class="form-control" required value="{% if payment %}{{ payment.payment_method }}{% endif %}">
+                    </div>
+                    <div class="form-group">
+                        <label for="invoice_details">Invoice Details</label>
+                        <textarea id="invoice_details" name="invoice_details" class="form-control" required>{% if payment %}{{ payment.invoice_details }}{% endif %}</textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit">{{ is_update|yesno:"Update Payment,Create Payment" }}</button>
+                    <a href="{% url 'payment_list' %}" class="btn btn-cancel">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

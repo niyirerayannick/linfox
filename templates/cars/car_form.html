@@ -1,29 +1,57 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Car</h4>
+                <h6>{{ car.pk|yesno:"Edit car,Add New car" }}</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                    <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Registration Number:</label>
+                                <input type="text" id="registration_number" name="registration_number" value="{{ car.registration_number|default_if_none:'' }}">
+                               </div>
 
-    <h1>{{ car.pk|yesno:"Edit Car,Add New Car" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="registration_number">Registration Number:</label>
-        <input type="text" id="registration_number" name="registration_number" value="{{ car.registration_number|default_if_none:'' }}">
-        <br>
-        <label for="make">Make:</label>
-        <input type="text" id="make" name="make" value="{{ car.make|default_if_none:'' }}">
-        <br>
-        <label for="model">Model:</label>
-        <input type="text" id="model" name="model" value="{{ car.model|default_if_none:'' }}">
-        <br>
-        <label for="fuel_type">Fuel Type:</label>
-        <input type="text" id="fuel_type" name="fuel_type" value="{{ car.fuel_type|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ car.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'car_list' %}">Back to Car List</a>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="make">Make:</label>
+                                <input type="text" id="make" name="make" value="{{ car.make|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            
+                            <div class="form-group">
+                                <label for="model">Model:</label>
+                                <input type="text" id="model" name="model" value="{{ car.model|default_if_none:'' }}">    
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            
+                            <div class="form-group">
+                                <label for="fuel_type">Fuel Type:</label>
+                                <input type="text" id="fuel_type" name="fuel_type" value="{{ car.fuel_type|default_if_none:'' }}">    
+                            </div>
+                        </div>
+                        <div class="form-login">
+                            <button type="submit" class="btn btn-submit me-2">{{ car.pk|yesno:"Update,Create" }}</button>
+                            <a href="{% url 'car_list' %}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

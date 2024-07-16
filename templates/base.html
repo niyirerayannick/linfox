@@ -13,6 +13,8 @@
 
 <link rel="stylesheet" href="{% static '/css/dataTables.bootstrap4.min.css' %}">
 
+<link rel="stylesheet" href="{% static '/plugins/select2/css/select2.min.css' %}">
+
 <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/fontawesome.min.css' %}">
 <link rel="stylesheet" href="{% static '/plugins/fontawesome/css/all.min.css' %}">
 
@@ -183,10 +185,11 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul>
-                            <li><a href="{% url 'owner_list' %}">New Car Owners </a></li>
-                            <li><a href="{% url 'owner_create' %}">Car Owners List</a></li>
-                            <li><a href="{% url 'car_ownership_list' %}">Car Ownerships List</a></li>
+                            <li><a href="{% url 'owner_create' %}">New Car Owners </a></li>
+                            <li><a href="{% url 'owner_list' %}">Car Owners List</a></li>
+                            
                             <li><a href="{% url 'car_ownership_create' %}">Add Car Ownerships</a></li>
+                            <li><a href="{% url 'car_ownership_list' %}">Car Ownerships List</a></li>
                         </ul>
                     </li>
 
@@ -221,8 +224,17 @@
                             <span class="menu-arrow"></span>
                         </a>
                         <ul>
-                            <li><a href="{% url 'destination_list' %}">Product Deliveries List</a></li>
-                            <li><a href="{% url 'destination_create' %}">Add Product Deliveries</a></li>
+                            <li><a href="{% url 'product_delivery_list' %}">Product Deliveries List</a></li>
+                            <li><a href="{% url 'product_delivery_create' %}">Add Product Deliveries</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="submenu">
+                        <a href="javascript:void(0);"><img src="{% static '/img/icons/dollar-square.svg' %}" alt="img">
+                            <span> Deductions</span> <span class="menu-arrow"></span></a>
+                        <ul>
+                        <li><a href="{% url 'deduction_list' %}">Deductions List </a></li>
+                        <li><a href="{% url 'payment_create' %}">Deduction new</a></li>
                         </ul>
                     </li>
 
@@ -237,11 +249,18 @@
 
 
                     <li class="submenu">
-                        <a href="javascript:void(0);"><img src="{% static '/img/icons/users1.svg' %}" alt="img">
-                            <span> Users</span> <span class="menu-arrow"></span></a>
+                        <a href="javascript:void(0);"><img src="{% static '/img/icons/purchase1.svg' %}" alt="img">
+                            <span> Reports</span> <span class="menu-arrow"></span></a>
                         <ul>
-                        <li><a href="{% url 'home' %}">New User </a></li>
-                        <li><a href="{% url 'home' %}">Users List</a></li>
+                        <li><a href="{% url 'home' %}">All </a></li>
+                        <li><a href="{% url 'home' %}">Fuel</a></li>
+                        <li><a href="{% url 'home' %}">Deliveries</a></li>
+                        <li><a href="{% url 'home' %}">Drivers</a></li>
+                        <li><a href="{% url 'home' %}">Owners</a></li>
+                        <li><a href="{% url 'home' %}">Deductions</a></li>
+                        <li><a href="{% url 'home' %}">Invoice</a></li>
+            
+
                         </ul>
                     </li>
 

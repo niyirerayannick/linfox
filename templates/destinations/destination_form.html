@@ -1,33 +1,43 @@
-
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
 
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-   
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Destination Form</title>
-</head>
-<body>
-    <h1>{{ destination.pk|yesno:"Edit Destination,Add New Destination" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="starting_point">Starting Point:</label>
-        <input type="text" id="starting_point" name="starting_point" value="{{ destination.starting_point|default_if_none:'' }}">
-        <br>
-        <label for="destination_point">Destination Point:</label>
-        <input type="text" id="destination_point" name="destination_point" value="{{ destination.destination_point|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ destination.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'destination_list' %}">Back to Destination List</a>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Destination Form</h4>
+                <h6>{{ driver.pk|yesno:"Edit Driver,Add New Driver" }}</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                    <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="starting_point">Starting Point:</label>
+                                <input type="text" id="starting_point" required name="starting_point" value="{{ destination.starting_point|default_if_none:'' }}">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="destination_point">Destination Point:</label>
+                                <input type="text" id="destination_point" required name="destination_point" value="{{ destination.destination_point|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="form-login">
+                            <button type="submit" class="btn btn-submit me-2">{{ destination.pk|yesno:"Update,Create" }}</button>
+                            <a href="{% url 'destination_list' %}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

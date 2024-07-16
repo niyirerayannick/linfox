@@ -1,30 +1,50 @@
-<!DOCTYPE html>{% extends "base.html" %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
 
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<html>
-<head>
-    <title>Owner Form</title>
-</head>
-<body>
-    <h1>{{ owner.pk|yesno:"Edit Owner,Add New Owner" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ owner.name|default_if_none:'' }}">
-        <br>
-        <label for="contact_details">Contact Details:</label>
-        <input type="text" id="contact_details" name="contact_details" value="{{ owner.contact_details|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ owner.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'owner_list' %}">Back to Owner List</a>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>owner</h4>
+                <h6>{{ owner.pk|yesno:"Edit owner,Add New owner" }}</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                    <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">owner Full Name:</label>
+                                <input type="text" id="name" required name="name" value="{{ owner.name|default_if_none:'' }}">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="title">owner Phone Number:</label>
+                                <input type="text" id="contact_details" required name="contact_details" value="{{ owner.contact_details|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            
+                            <div class="form-group">
+                                <label for="license_number">owner License Number:</label>
+                                <input type="text" id="license_number" required name="license_number" value="{{ owner.license_number|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="form-login">
+                            <button type="submit" class="btn btn-submit me-2">{{ owner.pk|yesno:"Update,Create" }}</button>
+                            <a href="{% url 'owner_list' %}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

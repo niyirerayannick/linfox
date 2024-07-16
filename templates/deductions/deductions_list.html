@@ -1,60 +1,21 @@
-
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-   
-        <div class="row">
-            <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                <div class="dash-count">
-                    <div class="dash-counts">
-                        <h4>{{ total_Fuel }}</h4>
-                        <h5>Total Fuel</h5>
-                    </div>
-                    <div class="dash-imgs">
-                        <i data-feather="user"></i>
-                    </div>
-                </div>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Fuel Deductions List</h4>
+                <h6>View/Search Fuel Deductions</h6>
             </div>
-            <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                <div class="dash-count das1">
-                    <div class="dash-counts">
-                        <h4>{{ total_payment }}</h4>
-                        <h5>Total PAYMENT</h5>
-                    </div>
-                    <div class="dash-imgs">
-                        <i data-feather="user-check"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                <div class="dash-count das2">
-                    <div class="dash-counts">
-                        <h4>{{ total_drivers }}</h4>
-                        <h5>Total DRIVERS</h5>
-                    </div>
-                    <div class="dash-imgs">
-                        <i data-feather="file-text"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 col-12 d-flex">
-                <div class="dash-count das3">
-                    <div class="dash-counts">
-                        <h4>{{ total_cars }}</h4>
-                        <h5>CAR</h5>
-                    </div>
-                    <div class="dash-imgs">
-                        <i data-feather="file"></i>
-                    </div>
-                </div>
+            <div class="page-btn">
+                <a href="{% url 'fuel_consumption_create' %}" class="btn btn-added">
+                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Destination">Add New Destination
+                </a>
             </div>
         </div>
-        
-        <div class="card mb-0">
+        <div class="card">
             <div class="card-body">
                 <div class="table-top">
                     <div class="search-set">
@@ -91,18 +52,22 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>FC Car</th>
-                                <th>FC Driver</th>
-                                <th>FC Destination</th>
-                                <th>FC Fuel Amount Used</th>
-                                <th>Invoice Picture</th>
+                                <th>De Car Owner</th>
+                                <th>De car</th>
+                                <th>De date</th>
+                                <th>De Fuel Advance</th>
+                                <th>De cash Advance</th>
+                                <th>De Truck Balance</th>
+                                <th>De Varriance in fuel</th>                                                               
+                                <th>Total Deductions</th>                                                               
+                                <th>De proof:</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for fuel_consumption in fuel_consumptions %}
                                 <tr>
-                                    <td>FC{{ fuel_consumption.id }}</td>
+                                    <td>De{{ fuel_consumption.id }}</td>
                                     <td>{{ fuel_consumption.car.registration_number }}</td>
                                     <td>{{ fuel_consumption.driver.name }}</td>
                                     <td>{{ fuel_consumption.destination }}</td>
@@ -134,7 +99,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 </div>
 {% endblock %}

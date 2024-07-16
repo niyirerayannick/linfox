@@ -4,30 +4,47 @@
 
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<html>
-<head>
-    <title>Driver Form</title>
-</head>
-<body>
-    <h1>{{ driver.pk|yesno:"Edit Driver,Add New Driver" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" value="{{ driver.name|default_if_none:'' }}">
-        <br>
-        <label for="license_number">License Number:</label>
-        <input type="text" id="license_number" name="license_number" value="{{ driver.license_number|default_if_none:'' }}">
-        <br>
-        <label for="contact_details">Contact Details:</label>
-        <input type="text" id="contact_details" name="contact_details" value="{{ driver.contact_details|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ driver.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'driver_list' %}">Back to Driver List</a>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Driver</h4>
+                <h6>{{ driver.pk|yesno:"Edit Driver,Add New Driver" }}</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-12">
+                    <form method="post"  enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="name">Driver Full Name:</label>
+                                <input type="text" id="name" required name="name" value="{{ driver.name|default_if_none:'' }}">
+                            </div>
+
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            <div class="form-group">
+                                <label for="title">Driver Phone Number:</label>
+                                <input type="text" id="contact_details" required name="contact_details" value="{{ driver.contact_details|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6 col-12">
+                            
+                            <div class="form-group">
+                                <label for="license_number">Driver License Number:</label>
+                                <input type="text" id="license_number" required name="license_number" value="{{ driver.license_number|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="form-login">
+                            <button type="submit" class="btn btn-submit me-2">{{ driver.pk|yesno:"Update,Create" }}</button>
+                            <a href="{% url 'driver_list' %}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </form>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

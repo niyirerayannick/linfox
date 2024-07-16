@@ -1,29 +1,100 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<html>
-<head>
-    <title>Fuel Consumption List</title>
-</head>
-<body>
-    <h1>Fuel Consumption List</h1>
-    <a href="{% url 'fuel_consumption_create' %}">Add New Fuel Consumption</a>
-    <ul>
-        {% for fuel_consumption in fuel_consumptions %}
-            <li>
-                <a href="{% url 'fuel_consumption_detail' fuel_consumption.pk %}">{{ fuel_consumption.driver.name }} - {{ fuel_consumption.car.registration_number }}</a> 
-                (<a href="{% url 'fuel_consumption_update' fuel_consumption.pk %}">Edit</a> | 
-                <a href="{% url 'fuel_consumption_delete' fuel_consumption.pk %}">Delete</a>)
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
-</div>
-</div>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Fuel Consumption List</h4>
+                <h6>View/Search Fuel Consumption</h6>
+            </div>
+            <div class="page-btn">
+                <a href="{% url 'fuel_consumption_create' %}" class="btn btn-added">
+                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Destination">Add New Destination
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <button class="btn btn-filter" id="filter_search">
+                            <img src="{% static 'img/icons/filter.svg' %}" alt="Filter">
+                            <span><img src="{% static 'img/icons/closes.svg' %}" alt="Close"></span>
+                        </button>
+                        <button class="btn btn-searchset">
+                            <img src="{% static 'img/icons/search-white.svg' %}" alt="Search">
+                        </button>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="PDF">
+                                    <img src="{% static 'img/icons/pdf.svg' %}" alt="PDF">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel">
+                                    <img src="{% static 'img/icons/excel.svg' %}" alt="Excel">
+                                </a>
+                            </li>
+                            <li>
+                                <a data-bs-toggle="tooltip" data-bs-placement="top" title="Print">
+                                    <img src="{% static 'img/icons/printer.svg' %}" alt="Print">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table datanew">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>FC Car</th>
+                                <th>FC Driver</th>
+                                <th>FC Destination</th>
+                                <th>FC Fuel Amount Used</th>
+                                <th>Invoice Picture</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for fuel_consumption in fuel_consumptions %}
+                                <tr>
+                                    <td>FC{{ fuel_consumption.id }}</td>
+                                    <td>{{ fuel_consumption.car.registration_number }}</td>
+                                    <td>{{ fuel_consumption.driver.name }}</td>
+                                    <td>{{ fuel_consumption.destination }}</td>
+                                    <td>{{ fuel_consumption.amount_used }}</td>
+                                    <td class="productimgname">
+                                        {% if fuel_consumption.invoice_image %}
+                                            <a href="javascript:void(0);" class="product-img">
+                                                <img src="{{ fuel_consumption.invoice_image.url }}" alt="{{ fuel_consumption.destination }}">
+                                            </a>
+                                        {% else %}
+                                            No Invoice Image
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <a class="me-3" href="{% url 'fuel_consumption_detail' fuel_consumption.pk %}">
+                                            <img src="{% static 'img/icons/eye.svg' %}" alt="View">
+                                        </a>
+                                        <a class="me-3" href="{% url 'fuel_consumption_update' fuel_consumption.pk %}">
+                                            <img src="{% static 'img/icons/edit.svg' %}" alt="Edit">
+                                        </a>
+                                        <a class="confirm-text" href="{% url 'fuel_consumption_delete' fuel_consumption.pk %}">
+                                            <img src="{% static 'img/icons/delete.svg' %}" alt="Delete">
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

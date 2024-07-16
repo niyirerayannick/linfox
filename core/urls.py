@@ -1,12 +1,14 @@
 from django.urls import path
-from .views import (register, home, user_login,logout_view,DriverListView, DriverDetailView, DriverCreateView, DriverUpdateView, DriverDeleteView,
+
+from core.models import Deduction
+from .views import (DeductionListView, PaymentFormView, export_product_deliveries, register, home, user_login,logout_view,DriverListView, DriverDetailView, DriverCreateView, DriverUpdateView, DriverDeleteView,
     CarListView, CarDetailView, CarCreateView, CarUpdateView, CarDeleteView,
     DestinationListView, DestinationDetailView, DestinationCreateView, DestinationUpdateView, DestinationDeleteView,
     FuelConsumptionListView, FuelConsumptionDetailView, FuelConsumptionCreateView, FuelConsumptionUpdateView, FuelConsumptionDeleteView,
     ProductDeliveryListView, ProductDeliveryDetailView, ProductDeliveryCreateView, ProductDeliveryUpdateView, ProductDeliveryDeleteView,
     OwnerListView, OwnerDetailView, OwnerCreateView, OwnerUpdateView, OwnerDeleteView,
     CarOwnershipListView, CarOwnershipDetailView, CarOwnershipCreateView, CarOwnershipUpdateView, CarOwnershipDeleteView,
-    PaymentListView, PaymentDetailView, PaymentCreateView, PaymentUpdateView, PaymentDeleteView
+    PaymentListView, PaymentDetailView, PaymentDeleteView
 )
 
 urlpatterns = [
@@ -43,6 +45,7 @@ urlpatterns = [
     path('product-deliveries/create/', ProductDeliveryCreateView.as_view(), name='product_delivery_create'),
     path('product-deliveries/<int:pk>/update/', ProductDeliveryUpdateView.as_view(), name='product_delivery_update'),
     path('product-deliveries/<int:pk>/delete/', ProductDeliveryDeleteView.as_view(), name='product_delivery_delete'),
+    path('export-product-deliveries/', export_product_deliveries, name='export_product_deliveries'),
     
     path('owners/', OwnerListView.as_view(), name='owner_list'),
     path('owners/<int:pk>/', OwnerDetailView.as_view(), name='owner_detail'),
@@ -58,9 +61,13 @@ urlpatterns = [
     
     path('payments/', PaymentListView.as_view(), name='payment_list'),
     path('payments/<int:pk>/', PaymentDetailView.as_view(), name='payment_detail'),
-    path('payments/create/', PaymentCreateView.as_view(), name='payment_create'),
-    path('payments/<int:pk>/update/', PaymentUpdateView.as_view(), name='payment_update'),
+    path('payments/create/', PaymentFormView.as_view(), name='payment_create'),
+    path('payments/<int:pk>/update/', PaymentFormView.as_view(), name='payment_update'),
     path('payments/<int:pk>/delete/', PaymentDeleteView.as_view(), name='payment_delete'),
+
+    path('deductions/', DeductionListView.as_view(), name='deduction_list'),
+
+    # path('invoice/<int:invoice_id>/pdf/', generate_invoice_pdf, name='invoice_pdf'),
 ]
 
 

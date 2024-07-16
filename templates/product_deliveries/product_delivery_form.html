@@ -4,52 +4,77 @@
 
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Product Delivery Form</title>
-</head>
-<body>
-    <h1>{{ product_delivery.pk|yesno:"Edit Product Delivery,Add New Product Delivery" }}</h1>
-    <form method="post">
-        {% csrf_token %}
-        <label for="driver">Driver:</label>
-        <select id="driver" name="driver">
-            {% for driver in drivers %}
-                <option value="{{ driver.id }}" {% if product_delivery.driver and product_delivery.driver.id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="car">Car:</label>
-        <select id="car" name="car">
-            {% for car in cars %}
-                <option value="{{ car.id }}" {% if product_delivery.car and product_delivery.car.id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="destination">Destination:</label>
-        <select id="destination" name="destination">
-            {% for destination in destinations %}
-                <option value="{{ destination.id }}" {% if product_delivery.destination and product_delivery.destination.id == destination.id %}selected{% endif %}>{{ destination.starting_point }} to {{ destination.destination_point }}</option>
-            {% endfor %}
-        </select>
-        <br>
-        <label for="product_name">Product Name:</label>
-        <input type="text" id="product_name" name="product_name" value="{{ product_delivery.product_name|default_if_none:'' }}">
-        <br>
-        <label for="quantity_sent">Quantity Sent:</label>
-        <input type="text" id="quantity_sent" name="quantity_sent" value="{{ product_delivery.quantity_sent|default_if_none:'' }}">
-        <br>
-        <label for="quantity_received">Quantity Received:</label>
-        <input type="text" id="quantity_received" name="quantity_received" value="{{ product_delivery.quantity_received|default_if_none:'' }}">
-        <br>
-        <button type="submit">{{ product_delivery.pk|yesno:"Update,Create" }}</button>
-    </form>
-    <a href="{% url 'product_delivery_list' %}">Back to Product Delivery List</a>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Product Delivery</h4>
+                <h6>{{ product_delivery.pk|yesno:"Edit Product Delivery,Add New Product Delivery" }}</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <form method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="car">Choose Car</label>
+                                <select id="car" name="car" required class="form-control">
+                                    <option value="">Choose Car</option>
+                                    {% for car in cars %}
+                                        <option value="{{ car.id }}" {% if fuel_consumption.car and fuel_consumption.car.id == car.id %}selected{% endif %}>{{ car.registration_number }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="driver">Choose Driver</label>
+                                <select id="driver" name="driver" required class="form-control">
+                                    <option value="">Choose Driver</option>
+                                    {% for driver in drivers %}
+                                        <option value="{{ driver.id }}" {% if fuel_consumption.driver and fuel_consumption.driver.id == driver.id %}selected{% endif %}>{{ driver.name }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="destination">Choose Destination:</label>
+                                <select id="destination" name="destination" required class="form-control">
+                                    <option value="">Choose Destination</option>
+                                    {% for destination in destinations %}
+                                        <option value="{{ destination.id }}" {% if fuel_consumption.destination and fuel_consumption.destination.id == destination.id %}selected{% endif %}>{{ destination.starting_point }} to {{ destination.destination_point }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="amount_used">Product Name:</label>
+                                <input type="text" id="product_name" name="product_name" value="{{ product_delivery.product_name|default_if_none:'' }}">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="invoice_picture">Quantity Sent</label>
+                                <input type="text" id="quantity_sent" name="quantity_sent" value="{{ product_delivery.quantity_sent|default_if_none:'' }}">
+                             </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="invoice_picture">Quantity Received</label>
+                                <input type="text" id="quantity_received" name="quantity_received" value="{{ product_delivery.quantity_received|default_if_none:'' }}">  
+                            </div>
+                        </div>
+                        <div class="form-login">
+                            <button type="submit" class="btn btn-submit me-2">{{ fuel_consumption.pk|yesno:"Update,Create" }}</button>
+                            <a href="{% url 'fuel_consumption_list' %}" class="btn btn-cancel">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
 {% endblock %}

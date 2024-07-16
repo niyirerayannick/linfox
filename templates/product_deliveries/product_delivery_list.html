@@ -1,29 +1,115 @@
 {% extends "base.html" %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-<html>
-<head>
-    <title>Product Delivery List</title>
-</head>
-<body>
-    <h1>Product Delivery List</h1>
-    <a href="{% url 'product_delivery_create' %}">Add New Product Delivery</a>
-    <ul>
-        {% for product_delivery in product_deliveries %}
-            <li>
-                <a href="{% url 'product_delivery_detail' product_delivery.pk %}">{{ product_delivery.product_name }}</a> 
-                (<a href="{% url 'product_delivery_update' product_delivery.pk %}">Edit</a> | 
-                <a href="{% url 'product_delivery_delete' product_delivery.pk %}">Delete</a>)
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Product Delivery List</h4>
+                <h6>View/Search Product Delivery</h6>
+            </div>
+            <div class="page-btn">
+                <a href="{% url 'product_delivery_create' %}" class="btn btn-added">
+                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Product Delivery">Add New Product Delivery
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <button class="btn btn-filter" id="filter_search">
+                            <img src="{% static 'img/icons/filter.svg' %}" alt="Filter">
+                            <span><img src="{% static 'img/icons/closes.svg' %}" alt="Close"></span>
+                        </button>
+                        <button class="btn btn-searchset">
+                            <img src="{% static 'img/icons/search-white.svg' %}" alt="Search">
+                        </button>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li>
+                                <a href="#" class="export-data" data-type="pdf" data-bs-toggle="tooltip" data-bs-placement="top" title="PDF">
+                                    <img src="{% static 'img/icons/pdf.svg' %}" alt="PDF">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="export-data" data-type="excel" data-bs-toggle="tooltip" data-bs-placement="top" title="Excel">
+                                    <img src="{% static 'img/icons/excel.svg' %}" alt="Excel">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="export-data" data-type="print" data-bs-toggle="tooltip" data-bs-placement="top" title="Print">
+                                    <img src="{% static 'img/icons/printer.svg' %}" alt="Print">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table datanew">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>PD Car</th>                               
+                                <th>PD Car Owner</th>
+                                <th>PD Driver</th>
+                                <th>PD Product Categories</th>
+                                <th>PD Date</th>
+                                <th>PD Destination</th>
+                                <th>PD Truck Number</th>
+                                <th>PD Sent</th>
+                                <th>PD Received</th>
+                                <th>PD tms file</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for product_delivery in product_deliveries %}
+                                <tr>
+                                    <td>{{ product_delivery.id }}</td>
+                                    <td>{{ product_delivery.product_name }}</td>
+                                    <td>{{ product_delivery.car }}</td>
+                                    <td>{{ product_delivery.driver }}</td>
+                                    <td>{{ product_delivery.destination }}</td>
+                                    <td>{{ product_delivery.quantity_sent }}</td>
+                                    <td>{{ product_delivery.quantity_received }}</td>
+                                    <td>
+                                        <a class="me-3" href="{% url 'product_delivery_detail' product_delivery.pk %}">
+                                            <img src="{% static 'img/icons/eye.svg' %}" alt="View">
+                                        </a>
+                                        <a class="me-3" href="{% url 'product_delivery_update' product_delivery.pk %}">
+                                            <img src="{% static 'img/icons/edit.svg' %}" alt="Edit">
+                                        </a>
+                                        <a class="confirm-text" href="{% url 'product_delivery_delete' product_delivery.pk %}">
+                                            <img src="{% static 'img/icons/delete.svg' %}" alt="Delete">
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-</div>
-</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const exportButtons = document.querySelectorAll('.export-data');
+
+        exportButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.preventDefault();
+                const dataType = this.getAttribute('data-type');
+                const url = '{% url "export_product_deliveries" %}?type=' + dataType;
+
+                // Open the URL in a new window/tab for download
+                window.open(url, '_blank');
+            });
+        });
+    });
+</script>
 {% endblock %}

@@ -3,20 +3,75 @@
 {% block content %}
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-
-    <h1>Car List</h1>
-    <a href="{% url 'car_create' %}">Add New Car</a>
-    <ul>
-        {% for car in cars %}
-            <li>
-                <a href="{% url 'car_detail' car.pk %}">{{ car.registration_number }}</a> 
-                (<a href="{% url 'car_update' car.pk %}">Edit</a> | 
-                <a href="{% url 'car_delete' car.pk %}">Delete</a>)
-            </li>
-        {% endfor %}
-    </ul>
-    </div>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Car List</h4>
+                <h6>View/Search Car</h6>
+            </div>
+            <div class="page-btn">
+                <a href="{% url 'car_create' %}" class="btn btn-added">
+                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Driver">Add New Car
+                </a>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="table-top">
+                    <div class="search-set">
+                        <button class="btn btn-filter" id="filter_search">
+                            <img src="{% static 'img/icons/filter.svg' %}" alt="Filter">
+                            <span><img src="{% static 'img/icons/closes.svg' %}" alt="Close"></span>
+                        </button>
+                        <button class="btn btn-searchset">
+                            <img src="{% static 'img/icons/search-white.svg' %}" alt="Search">
+                        </button>
+                    </div>
+                    <div class="wordset">
+                        <ul>
+                            <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="PDF"><img src="{% static 'img/icons/pdf.svg' %}" alt="PDF"></a></li>
+                            <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="Excel"><img src="{% static 'img/icons/excel.svg' %}" alt="Excel"></a></li>
+                            <li><a data-bs-toggle="tooltip" data-bs-placement="top" title="Print"><img src="{% static 'img/icons/printer.svg' %}" alt="Print"></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table datanew">
+                        <thead>
+                            <tr>
+                                <th>Car ID</th>
+                                <th>Car Registration Number</th>
+                                <th>Car Make:</th>
+                                <th>Car Model</th>
+                                <th>Car Fuel Type</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for car in cars %}
+                                <tr>
+                                    <td>{{ car.id }}</td>
+                                    <td>{{ car.registration_number }}</td>
+                                    <td>{{ car.make }} </td>
+                                    <td>{{ car.model }}</td>
+                                    <td>{{ car.fuel_type }}</td>
+                                    <td>
+                                        <a class="me-3" href="{% url 'car_detail' car.pk %}">
+                                            <img src="{% static 'img/icons/eye.svg' %}" alt="View">
+                                        </a>
+                                        <a class="me-3" href="{% url 'car_update' car.pk %}">
+                                            <img src="{% static 'img/icons/edit.svg' %}" alt="Edit">
+                                        </a>
+                                        <a class="confirm-text" href="{% url 'car_delete' car.pk %}">
+                                            <img src="{% static 'img/icons/delete.svg' %}" alt="Delete">
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 {% endblock %}
