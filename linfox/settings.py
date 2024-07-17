@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)bc_w*g3#f3a4p7xunq12sd%*4u^3kzz+g^z@!#=b#j#)(_&sn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['linfox.bwenge.com']
 
 # Application definition
 
@@ -75,7 +75,7 @@ WSGI_APPLICATION = 'linfox.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': BASE_DIR / 'linfox_db/db.sqlite3',
     }
 }
 
