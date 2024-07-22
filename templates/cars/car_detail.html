@@ -1,26 +1,49 @@
-
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
 <div class="page-wrapper">
     <div class="content">
-    <div class="row">
-    
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Car Detail</title>
-</head>
-<body>
-    <h1>Car Detail</h1>
-    <p>Registration Number: {{ car.registration_number }}</p>
-    <p>Make: {{ car.make }}</p>
-    <p>car Model: {{ car.model }}</p>
-    <p>Fuel Type: {{ car.fuel_type }}</p>
-    <a href="{% url 'car_list' %}">Back to Car List</a>
-</body>
-</html>
-</div>
-</div>
+        <div class="page-header">
+            <div class="page-title">
+                <h4>Car Detail</h4>
+                <h6>View Car Information</h6>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="registration_number">Registration Number:</label>
+                            <p id="registration_number">{{ car.registration_number }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="chassis_number">Chassis Number:</label>
+                            <p id="chassis_number">{{ car.chassis_number }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="model">Model:</label>
+                            <p id="model">{{ car.model }}</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="fuel_type">Fuel Type:</label>
+                            <p id="fuel_type">{{ car.fuel_type }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-login">
+                    <a href="{% url 'car_list' %}" class="btn btn-cancel">Go Back</a>
+                    <a href="{% url 'car_update' car.pk %}" class="btn btn-primary">Edit Car</a>
+                    <a href="{% url 'car_delete' car.pk %}" class="btn btn-danger confirm-text">Delete Car</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

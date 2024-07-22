@@ -10,7 +10,7 @@
             </div>
             <div class="page-btn">
                 <a href="{% url 'car_create' %}" class="btn btn-added">
-                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Driver">Add New Car
+                    <img src="{% static 'img/icons/plus.svg' %}" class="me-1" alt="Add New Car">Add New Car
                 </a>
             </div>
         </div>
@@ -39,10 +39,10 @@
                         <thead>
                             <tr>
                                 <th>Car ID</th>
-                                <th>Car Registration Number</th>
-                                <th>Car Make:</th>
-                                <th>Car Model</th>
-                                <th>Car Fuel Type</th>
+                                <th>Registration Number</th>
+                                <th>Chassis Number</th>
+                                <th>Model</th>
+                                <th>Fuel Type</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -51,7 +51,7 @@
                                 <tr>
                                     <td>{{ car.id }}</td>
                                     <td>{{ car.registration_number }}</td>
-                                    <td>{{ car.make }} </td>
+                                    <td>{{ car.chassis_number }}</td>
                                     <td>{{ car.model }}</td>
                                     <td>{{ car.fuel_type }}</td>
                                     <td>

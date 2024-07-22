@@ -174,7 +174,7 @@ class Invoice(models.Model):
         ('partial_paid', 'Partial Paid'),
     ]
 
-    invoice_number = models.CharField(max_length=50, unique=True)
+    invoice_number = models.AutoField(primary_key=True)
     date_issued = models.DateField(auto_now_add=True)
     amount_due = models.DecimalField(max_digits=10, decimal_places=2)
     amount_paid = models.DecimalField(max_digits=10, decimal_places=2, default=0)
